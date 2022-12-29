@@ -1,0 +1,35 @@
+DIRECTIVES
+
+1:
+I'm trying to create a WordPress plugin. Can you create a PHP file for a plugin is going to be called "Expression Engine Blog Importer"? I want the plugin to have an options page in the WordPress Admin menu under "Tools". 
+
+2:
+On that options page I want to include fields named host, database, username, and password information that we'll use in the plugin. What code should I add to the example you gave above so that a user can enter values for those fields and save it for future use in the plugin? I don't need to sanitize the fields. I just want this to be done in the simpliest way possible.
+
+3:
+Now, what code should I add to the plugin to create a function called "import_blog_posts"? I want to trigger this function later. The import_blog_posts function will contain a loop. The loop loops through each entry in the "exp_channel_titles" table of the database with the MySQL information that was set on the options page we discussed earlier. Inside that loop we just created, I want to save the value of the "entry_id", "title", “url_title”, "sticky" and "entry_date" column into variables of the same name that I'll use later.
+
+4:
+On each iteration of the loop, I also want to use entry_id to look for matching rows in another table called "exp_channel_data". If any rows match, I want to save content that's in the "field_id_137" column into a variable called "blog_content" that I'll use later. I also want to save content in the "field_id_213" column into a variable called "author_alias" that I'll also use later. What code should I add to the loop you created before for that?
+
+5:
+Next, I want to search through a table named “exp_category_posts” for each row that includes the entry_id value in the table's own entry_id column. Matches should return values from a column named “cat_id”, which we can save as a variable named $cat_id. What code should I add to the code you created before for that?
+
+
+6:
+cat_id should then be matched to cat_name and cat_url_title in another table named "exp_categories". If the cat_name hasn’t been created as a WordPress category yet, I want to create the category with the name being the value of cat_name, the category slug will be the data in the cat_url_title column, and the category description in the cat_description column. What code should I add to the loop you created before to do what I described?
+
+7:
+Next, I want to search through a table named “exp_tag_entries” for each row that includes the entry_id value in the table's own entry_id column. Matches should return values from a column named tag_id, which we can save as a variable named $tag_id. What code should I add to the code you created before for that?
+
+8:
+tag_id should then be matched to tag_name in another table named "exp_tag_tags". If the tag_name hasn’t been created as a WordPress tag yet, I want to create the tag with the name being the value of tag_name. What code should I add to the loop you created before to do what I described?
+
+9:
+The import_blog_posts() function you created creates a blog post for every row in the exp_channel_titles database, but I want it to only create a post if $blog_content isn't empty. What code should I add to do that?
+
+10: 
+Can you simplify the code in that example to minimize the number of requests sent to the databases? I have over 14,000 entries in the exp_channel_titles and exp_channel_fields databases.
+
+11:
+How can I include that "import_blog_posts" function in the plugin we discussed earlier and trigger it via a "Run Import" button on the plugin's option page that we also discussed? 
